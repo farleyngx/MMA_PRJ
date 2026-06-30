@@ -1,14 +1,15 @@
-import React from "react";
-import { View, Text, ScrollView, TouchableOpacity, SafeAreaView, Platform, Alert } from "react-native";
-import { useLocalSearchParams, useRouter } from "expo-router";
 import { Image } from "expo-image";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import React from "react";
+import { Alert, Platform, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useCartStore } from "../../features/cart/store/useCartStore";
 import { useProduct } from "../../features/products/hooks/useProduct";
 import { useThemeStore } from "../../features/theme/store/useThemeStore";
-import { useCartStore } from "../../features/cart/store/useCartStore";
+import { ErrorView } from "../../shared/ui/ErrorView";
+import { LoadingSpinner } from "../../shared/ui/LoadingSpinner";
 import { ThemedButton } from "../../shared/ui/ThemedButton";
 import { ThemedIcon } from "../../shared/ui/ThemedIcon";
-import { LoadingSpinner } from "../../shared/ui/LoadingSpinner";
-import { ErrorView } from "../../shared/ui/ErrorView";
 
 export default function ProductDetailScreen() {
   const router = useRouter();
@@ -72,24 +73,24 @@ export default function ProductDetailScreen() {
     <SafeAreaView className="flex-1 bg-gray-50" style={{ paddingTop: Platform.OS === "android" ? 30 : 0 }}>
       {/* Header */}
       <View className="px-4 py-3 bg-white border-b border-gray-100 flex-row justify-between items-center">
-        <TouchableOpacity 
+        <TouchableOpacity
           onPress={() => router.back()}
           className="p-1 -ml-1 mr-2"
         >
           <ThemedIcon name="arrow-back" size={24} useThemeColor={false} color="#374151" />
         </TouchableOpacity>
-        
+
         <Text className="text-base font-bold text-gray-800 flex-1 text-center" numberOfLines={1}>
           Chi tiết sản phẩm
         </Text>
 
-        <TouchableOpacity 
+        <TouchableOpacity
           onPress={() => router.push("/(tabs)/cart")}
           className="p-1 relative ml-2"
         >
           <ThemedIcon name="cart-outline" size={24} useThemeColor={false} color="#374151" />
           {cartCount > 0 && (
-            <View 
+            <View
               style={{ backgroundColor: primaryColor }}
               className="absolute -top-1 -right-1.5 min-w-[16px] h-4 rounded-full items-center justify-center px-1"
             >
@@ -101,12 +102,12 @@ export default function ProductDetailScreen() {
 
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Product Image Panel */}
-        <View className="bg-white p-6 items-center justify-center border-b border-gray-100">
+        <View className="w-full h-80 bg-white p-6 items-center justify-center border-b border-gray-100">
           <Image
             source={{ uri: product.image }}
+            style={{ width: '100%', height: '100%' }}
             contentFit="contain"
             transition={300}
-            className="w-full h-80"
           />
         </View>
 
@@ -114,7 +115,7 @@ export default function ProductDetailScreen() {
         <View className="bg-white px-4 py-5 mb-3 border-b border-gray-100">
           {/* Category Tag */}
           <View className="bg-gray-100 self-start px-2.5 py-0.5 rounded-full mb-3">
-            <Text className="text-[10px] text-gray-500 font-bold uppercase tracking-wider capitalize">
+            <Text className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">
               {product.category}
             </Text>
           </View>
@@ -126,8 +127,8 @@ export default function ProductDetailScreen() {
 
           {/* Price and Rating Row */}
           <View className="flex-row items-center justify-between mt-1">
-            <Text 
-              className="font-extrabold text-2xl" 
+            <Text
+              className="font-extrabold text-2xl"
               style={{ color: primaryColor }}
             >
               ${product.price.toFixed(2)}
@@ -175,9 +176,9 @@ export default function ProductDetailScreen() {
           <ThemedIcon name="chatbox-ellipses-outline" size={22} useThemeColor={false} color="#6B7280" />
         </TouchableOpacity>
 
-        <ThemedButton 
-          title="Thêm vào giỏ hàng" 
-          onPress={handleAddToCart} 
+        <ThemedButton
+          title="Thêm vào giỏ hàng"
+          onPress={handleAddToCart}
           className="flex-1"
         />
       </View>

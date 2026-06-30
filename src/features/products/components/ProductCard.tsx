@@ -1,11 +1,11 @@
-import React from "react";
-import { View, Text, TouchableOpacity, Dimensions } from "react-native";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
-import { Product } from "../../../types";
-import { useThemeStore } from "../../theme/store/useThemeStore";
-import { useCartStore } from "../../cart/store/useCartStore";
+import React from "react";
+import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import { ThemedIcon } from "../../../shared/ui/ThemedIcon";
+import { Product } from "../../../types";
+import { useCartStore } from "../../cart/store/useCartStore";
+import { useThemeStore } from "../../theme/store/useThemeStore";
 
 interface ProductCardProps {
   product: Product;
@@ -16,7 +16,7 @@ const { width } = Dimensions.get("window");
 export const ProductCard = ({ product }: ProductCardProps) => {
   const { primaryColor } = useThemeStore();
   const { addToCart } = useCartStore();
-  
+
   // Calculate width for 2 columns with spacing
   const cardWidth = (width - 24) / 2;
 
@@ -32,20 +32,20 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <Link href={`/product/${product.id}`} asChild>
-      <TouchableOpacity 
-        style={{ width: cardWidth }} 
+      <TouchableOpacity
+        style={{ width: cardWidth }}
         className="p-2"
         activeOpacity={0.8}
       >
-        <View className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm p-3 h-full flex flex-col justify-between">
+        <View className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm p-3 h-fit flex flex-col justify-between">
           <View>
             {/* Product Image */}
             <View className="w-full h-40 bg-gray-50 rounded-lg items-center justify-center overflow-hidden mb-3 relative">
               <Image
                 source={{ uri: product.image }}
+                style={{ width: '100%', height: '100%' }}
                 contentFit="contain"
                 transition={200}
-                className="w-full h-full"
               />
               {/* Category tag */}
               <View className="absolute top-1 left-1 bg-white/95 px-2 py-0.5 rounded-full border border-gray-100">
@@ -56,8 +56,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             </View>
 
             {/* Product Title */}
-            <Text 
-              numberOfLines={2} 
+            <Text
+              numberOfLines={2}
               className="text-gray-800 font-medium text-sm leading-4 mb-1 h-8"
             >
               {product.title}
@@ -84,13 +84,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
           {/* Price and Add Button */}
           <View className="flex-row justify-between items-center mt-2 pt-2 border-t border-gray-50">
-            <Text 
-              className="font-bold text-base" 
+            <Text
+              className="font-bold text-base"
               style={{ color: primaryColor }}
             >
               ${product.price.toFixed(2)}
             </Text>
-            
+
             <TouchableOpacity
               onPress={handleAddToCart}
               className="w-8 h-8 rounded-full items-center justify-center"

@@ -1,12 +1,12 @@
-import React from "react";
-import { View, Text, TouchableOpacity, SafeAreaView, Platform } from "react-native";
 import { Link } from "expo-router";
-import { Image } from "expo-image";
+import React from "react";
+import { Platform, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { ProductGrid } from "../../features/products/components/ProductGrid";
 import { useProducts } from "../../features/products/hooks/useProducts";
 import { useThemeStore } from "../../features/theme/store/useThemeStore";
-import { ProductGrid } from "../../features/products/components/ProductGrid";
-import { SkeletonCard } from "../../shared/ui/SkeletonCard";
 import { ErrorView } from "../../shared/ui/ErrorView";
+import { SkeletonCard } from "../../shared/ui/SkeletonCard";
 import { ThemedIcon } from "../../shared/ui/ThemedIcon";
 
 export default function HomeScreen() {

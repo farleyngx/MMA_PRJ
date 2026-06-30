@@ -1,7 +1,8 @@
-import React from "react";
-import { View, Text, ScrollView, TouchableOpacity, SafeAreaView, Platform } from "react-native";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
+import React from "react";
+import { Platform, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useCartStore } from "../../features/cart/store/useCartStore";
 import { useThemeStore } from "../../features/theme/store/useThemeStore";
 import { ThemedButton } from "../../shared/ui/ThemedButton";
@@ -63,9 +64,9 @@ export default function CartScreen() {
                 <View className="w-20 h-20 bg-gray-50 rounded-xl items-center justify-center overflow-hidden mr-3 border border-gray-100">
                   <Image
                     source={{ uri: item.image }}
+                    style={{ width: '100%', height: '100%' }}
                     contentFit="contain"
                     transition={200}
-                    className="w-full h-full"
                   />
                 </View>
 

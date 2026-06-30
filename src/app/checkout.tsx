@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
-import { View, Text, TouchableOpacity, SafeAreaView, Platform } from "react-native";
 import { useRouter } from "expo-router";
+import React, { useEffect } from "react";
+import { Platform, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useCartStore } from "../features/cart/store/useCartStore";
 import { CheckoutForm } from "../features/checkout/components/CheckoutForm";
 import { CheckoutFormData } from "../features/checkout/schemas/checkoutSchema";

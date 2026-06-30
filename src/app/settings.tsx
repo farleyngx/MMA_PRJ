@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity, SafeAreaView, Platform, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
-import { useThemeStore } from "../features/theme/store/useThemeStore";
+import React, { useState } from "react";
+import { Platform, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { ColorPickerModal } from "../features/theme/components/ColorPickerModal";
+import { useThemeStore } from "../features/theme/store/useThemeStore";
 import { ThemedIcon } from "../shared/ui/ThemedIcon";
 
 export default function SettingsScreen() {

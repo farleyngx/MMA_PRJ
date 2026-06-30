@@ -1,6 +1,7 @@
-import React from "react";
-import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, Platform } from "react-native";
 import { useRouter } from "expo-router";
+import React from "react";
+import { Platform, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useAuthStore } from "../../features/auth/store/useAuthStore";
 import { useThemeStore } from "../../features/theme/store/useThemeStore";
 import { ThemedIcon } from "../../shared/ui/ThemedIcon";

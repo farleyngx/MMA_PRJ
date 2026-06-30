@@ -1,8 +1,8 @@
 import React from "react";
-import { FlatList, View } from "react-native";
+import { FlatList } from "react-native";
 import { useResponsive } from "../../../shared/hooks/useResponsive";
-import { ProductCard } from "./ProductCard";
 import { Product } from "../../../types";
+import { ProductCard } from "./ProductCard";
 
 interface ProductGridProps {
   products: Product[];
@@ -33,7 +33,7 @@ export const ProductGrid = ({
       refreshing={refreshing}
       onRefresh={onRefresh}
       contentContainerStyle={{ padding: 8, paddingBottom: 24 }}
-      columnWrapperStyle={numColumns > 1 ? { justifyContent: "flex-start" } : undefined}
+      // columnWrapperStyle={numColumns > 1 ? { justifyContent: "flex-start" } : undefined}
     />
   );
 };
