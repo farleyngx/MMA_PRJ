@@ -90,6 +90,10 @@ src
 | **Trang thành công** | ✅ Hoàn thành | Chuyển hướng người nhận sau khi đặt hàng sang `order-success.tsx` hiển thị mã đơn hàng ngẫu nhiên, địa chỉ nhận hàng và tổng hóa đơn, đồng thời tự động dọn sạch giỏ hàng. |
 | **Skeleton & Error UI** | ✅ Hoàn thành | Thay thế Spinner đơn điệu bằng hiệu ứng Skeleton Card pulse đẹp mắt khi tải sản phẩm. Tích hợp `ErrorView` với nút "Thử lại" kích hoạt cơ chế `refetch` khi API gặp sự cố. |
 | **Tìm kiếm & Bộ lọc** | ✅ Hoàn thành | Tích hợp bộ tìm kiếm nhập liệu (có debounce tránh spam request) kết hợp với các chip lọc danh mục trượt ngang trên màn hình `search.tsx`. |
+| **Sửa lỗi hiển thị ảnh** | ✅ Hoàn thành | Khắc phục lỗi không hiển thị hình ảnh từ API do NativeWind không mapping được class `w-full h-full` vào thành phần Native `Image` (expo-image). Đổi sang dùng `style={{ width: '100%', height: '100%' }}` trực tiếp trên các thẻ `<Image>` tại `ProductCard.tsx` và `product/[id].tsx`. |
+| **SafeAreaView chuẩn hóa** | ✅ Hoàn thành | Thay thế 100% các import `SafeAreaView` từ `react-native` sang `react-native-safe-area-context` trên tất cả các màn hình chính và phụ (`index.tsx`, `cart.tsx`, `mall.tsx`, `profile.tsx`, `search.tsx`, `checkout.tsx`, `order-success.tsx`, `product/[id].tsx`, `settings.tsx`). |
+| **Tối ưu hóa UI Tab Bar** | ✅ Hoàn thành | Nới rộng chiều cao Tab Bar lên `100` và tinh chỉnh `paddingBottom: 20` giúp tối ưu hóa không gian hiển thị trên các thiết bị smartphone thế hệ mới. |
+
 
 ---
 

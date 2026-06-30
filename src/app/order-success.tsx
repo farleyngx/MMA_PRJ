@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, SafeAreaView, Platform } from "react-native";
+import { View, Text, Platform } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { ThemedButton } from "../shared/ui/ThemedButton";
 import { ThemedIcon } from "../shared/ui/ThemedIcon";

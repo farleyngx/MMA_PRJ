@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { View, Text, TextInput, TouchableOpacity, ScrollView, SafeAreaView, Platform } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, ScrollView, Platform } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { useProducts } from "../features/products/hooks/useProducts";
 import { useCategories } from "../features/products/hooks/useCategories";
