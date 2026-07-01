@@ -1,11 +1,11 @@
-import React from "react";
-import { View, Text, TextInput, ScrollView } from "react-native";
-import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { checkoutSchema, CheckoutFormData } from "../schemas/checkoutSchema";
-import { useThemeStore } from "../../theme/store/useThemeStore";
+import React from "react";
+import { Controller, useForm } from "react-hook-form";
+import { ScrollView, Text, TextInput, View } from "react-native";
 import { ThemedButton } from "../../../shared/ui/ThemedButton";
 import { ThemedIcon } from "../../../shared/ui/ThemedIcon";
+import { useThemeStore } from "../../theme/store/useThemeStore";
+import { CheckoutFormData, checkoutSchema } from "../schemas/checkoutSchema";
 
 interface CheckoutFormProps {
   onSubmit: (data: CheckoutFormData) => void;
@@ -33,11 +33,11 @@ export const CheckoutForm = ({ onSubmit, totalPrice }: CheckoutFormProps) => {
       className="flex-1 px-4 py-3"
       showsVerticalScrollIndicator={false}
     >
-      <Text className="text-gray-800 font-bold text-lg mb-4">Thông tin nhận hàng</Text>
+      <Text className="text-gray-800 font-bold text-xl mb-4">Thông tin nhận hàng</Text>
 
       {/* Full Name */}
       <View className="mb-4">
-        <Text className="text-gray-700 font-semibold text-xs mb-1">Họ và tên</Text>
+        <Text className="text-gray-700 font-semibold text-md mb-1">Họ và tên</Text>
         <Controller
           control={control}
           name="fullName"
@@ -49,7 +49,7 @@ export const CheckoutForm = ({ onSubmit, totalPrice }: CheckoutFormProps) => {
             >
               <ThemedIcon name="person-outline" size={18} useThemeColor={false} color="#9CA3AF" />
               <TextInput
-                className="flex-1 py-3 px-2 text-gray-800 text-sm"
+                className="flex-1 py-3 px-2 text-gray-800 text-md"
                 placeholder="Nhập tên người nhận hàng"
                 placeholderTextColor="#9CA3AF"
                 onBlur={onBlur}
@@ -68,7 +68,7 @@ export const CheckoutForm = ({ onSubmit, totalPrice }: CheckoutFormProps) => {
 
       {/* Phone Number */}
       <View className="mb-4">
-        <Text className="text-gray-700 font-semibold text-xs mb-1">Số điện thoại</Text>
+        <Text className="text-gray-700 font-semibold text-md mb-1">Số điện thoại</Text>
         <Controller
           control={control}
           name="phone"
@@ -80,7 +80,7 @@ export const CheckoutForm = ({ onSubmit, totalPrice }: CheckoutFormProps) => {
             >
               <ThemedIcon name="call-outline" size={18} useThemeColor={false} color="#9CA3AF" />
               <TextInput
-                className="flex-1 py-3 px-2 text-gray-800 text-sm"
+                className="flex-1 py-3 px-2 text-gray-800 text-md"
                 placeholder="Ví dụ: 0987654321"
                 placeholderTextColor="#9CA3AF"
                 keyboardType="phone-pad"
@@ -100,7 +100,7 @@ export const CheckoutForm = ({ onSubmit, totalPrice }: CheckoutFormProps) => {
 
       {/* Email */}
       <View className="mb-4">
-        <Text className="text-gray-700 font-semibold text-xs mb-1">Email</Text>
+        <Text className="text-gray-700 font-semibold text-md mb-1">Email</Text>
         <Controller
           control={control}
           name="email"
@@ -112,7 +112,7 @@ export const CheckoutForm = ({ onSubmit, totalPrice }: CheckoutFormProps) => {
             >
               <ThemedIcon name="mail-outline" size={18} useThemeColor={false} color="#9CA3AF" />
               <TextInput
-                className="flex-1 py-3 px-2 text-gray-800 text-sm"
+                className="flex-1 py-3 px-2 text-gray-800 text-md"
                 placeholder="Địa chỉ email để nhận hóa đơn"
                 placeholderTextColor="#9CA3AF"
                 keyboardType="email-address"
@@ -133,7 +133,7 @@ export const CheckoutForm = ({ onSubmit, totalPrice }: CheckoutFormProps) => {
 
       {/* Shipping Address */}
       <View className="mb-6">
-        <Text className="text-gray-700 font-semibold text-xs mb-1">Địa chỉ giao hàng</Text>
+        <Text className="text-gray-700 font-semibold text-md mb-1">Địa chỉ giao hàng</Text>
         <Controller
           control={control}
           name="address"
@@ -147,7 +147,7 @@ export const CheckoutForm = ({ onSubmit, totalPrice }: CheckoutFormProps) => {
                 <ThemedIcon name="location-outline" size={18} useThemeColor={false} color="#9CA3AF" />
               </View>
               <TextInput
-                className="flex-1 py-2 px-2 text-gray-800 text-sm h-20"
+                className="flex-1 py-2 px-2 text-gray-800 text-md h-20"
                 placeholder="Nhập địa chỉ giao hàng cụ thể..."
                 placeholderTextColor="#9CA3AF"
                 multiline
@@ -169,22 +169,22 @@ export const CheckoutForm = ({ onSubmit, totalPrice }: CheckoutFormProps) => {
 
       {/* Bill summary card */}
       <View className="bg-gray-50 border border-gray-100 rounded-2xl p-4 mb-8">
-        <Text className="text-gray-800 font-bold mb-3 text-sm">Tóm tắt đơn hàng</Text>
+        <Text className="text-gray-800 font-bold mb-3 text-md">Tóm tắt đơn hàng</Text>
         
         <View className="flex-row justify-between mb-2">
-          <Text className="text-gray-500 text-xs">Tổng tiền hàng</Text>
-          <Text className="text-gray-700 font-medium text-xs">${totalPrice.toFixed(2)}</Text>
+          <Text className="text-gray-500 text-md">Tổng tiền hàng</Text>
+          <Text className="text-gray-700 font-medium text-md">${totalPrice.toFixed(2)}</Text>
         </View>
         
         <View className="flex-row justify-between mb-2">
-          <Text className="text-gray-500 text-xs">Phí vận chuyển</Text>
-          <Text className="text-green-600 font-medium text-xs">Miễn phí</Text>
+          <Text className="text-gray-500 text-md">Phí vận chuyển</Text>
+          <Text className="text-green-600 font-medium text-md">Miễn phí</Text>
         </View>
         
         <View className="h-[1px] bg-gray-200 my-2" />
         
         <View className="flex-row justify-between items-center mt-1">
-          <Text className="text-gray-800 font-bold text-sm">Tổng thanh toán</Text>
+          <Text className="text-gray-800 font-bold text-md">Tổng thanh toán</Text>
           <Text 
             className="font-bold text-lg" 
             style={{ color: primaryColor }}

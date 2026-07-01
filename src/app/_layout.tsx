@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
 import { Stack, useRouter, useSegments } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { useAuthStore } from "../features/auth/store/useAuthStore";
+import React, { useEffect, useState } from "react";
 import "../../global.css";
+import { useAuthStore } from "../features/auth/store/useAuthStore";
 
 export const unstable_settings = {
   initialRouteName: "(tabs)",
@@ -30,7 +30,7 @@ export default function RootLayout() {
       // If user is authenticated and is in the auth screens, redirect to home/tabs
       router.replace("/(tabs)");
     }
-  }, [isAuthenticated, segments, isReady]);
+  }, [isAuthenticated, segments, isReady, router]);
 
   return (
     <>
@@ -38,7 +38,6 @@ export default function RootLayout() {
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="product/[id]" options={{ headerShown: false }} />
-        <Stack.Screen name="search" options={{ headerShown: false }} />
         <Stack.Screen name="checkout" options={{ headerShown: false }} />
         <Stack.Screen name="order-success" options={{ headerShown: false }} />
         <Stack.Screen name="settings" options={{ headerShown: false }} />

@@ -42,16 +42,7 @@ export default function ProductDetailScreen() {
 
   if (isLoading) {
     return (
-      <SafeAreaView className="flex-1 bg-white" style={{ paddingTop: Platform.OS === "android" ? 30 : 0 }}>
-        {/* Mock Header */}
-        <View className="px-4 py-3 bg-white border-b border-gray-100 flex-row items-center">
-          <TouchableOpacity onPress={() => router.back()} className="p-1 -ml-1 mr-2">
-            <ThemedIcon name="arrow-back" size={24} useThemeColor={false} color="#374151" />
-          </TouchableOpacity>
-          <Text className="text-lg font-bold text-gray-800">Đang tải...</Text>
-        </View>
-        <LoadingSpinner />
-      </SafeAreaView>
+      <LoadingSpinner />
     );
   }
 
@@ -70,17 +61,27 @@ export default function ProductDetailScreen() {
   }
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-50" style={{ paddingTop: Platform.OS === "android" ? 30 : 0 }}>
-      {/* Header */}
-      <View className="px-4 py-3 bg-white border-b border-gray-100 flex-row justify-between items-center">
+    <SafeAreaView
+      edges={['right', 'left', 'bottom']}
+      className="flex-1"
+      style={{ paddingTop: Platform.OS === "android" ? 30 : 0 }}>
+
+      {/* Header Search & Theme Bar */}
+      <View
+        style={{ backgroundColor: primaryColor }}
+        className="h-36 px-4 pt-16 flex-row justify-between items-center">
+
+        <View className="absolute -top-14 -right-10 w-48 h-48 bg-white/20 rounded-full" />
+        <View className="absolute -bottom-10 -left-10 w-56 h-56 bg-white/30 rounded-full " />
+
         <TouchableOpacity
           onPress={() => router.back()}
           className="p-1 -ml-1 mr-2"
         >
-          <ThemedIcon name="arrow-back" size={24} useThemeColor={false} color="#374151" />
+          <ThemedIcon name="arrow-back" size={24} useThemeColor={false} color="white" />
         </TouchableOpacity>
 
-        <Text className="text-base font-bold text-gray-800 flex-1 text-center" numberOfLines={1}>
+        <Text className="text-2xl font-bold text-white flex-1 text-center" numberOfLines={1}>
           Chi tiết sản phẩm
         </Text>
 
@@ -88,7 +89,7 @@ export default function ProductDetailScreen() {
           onPress={() => router.push("/(tabs)/cart")}
           className="p-1 relative ml-2"
         >
-          <ThemedIcon name="cart-outline" size={24} useThemeColor={false} color="#374151" />
+          <ThemedIcon name="cart-outline" size={24} useThemeColor={false} color="white" />
           {cartCount > 0 && (
             <View
               style={{ backgroundColor: primaryColor }}
@@ -102,10 +103,12 @@ export default function ProductDetailScreen() {
 
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Product Image Panel */}
-        <View className="w-full h-80 bg-white p-6 items-center justify-center border-b border-gray-100">
+        <View 
+        style={{ backgroundColor: `${primaryColor}5` }}
+        className="w-full h-96 p-6 items-center justify-center border-b border-gray-100">
           <Image
             source={{ uri: product.image }}
-            style={{ width: '100%', height: '100%' }}
+            style={{ width: '90%', height: '90%' }}
             contentFit="contain"
             transition={300}
           />
@@ -115,20 +118,20 @@ export default function ProductDetailScreen() {
         <View className="bg-white px-4 py-5 mb-3 border-b border-gray-100">
           {/* Category Tag */}
           <View className="bg-gray-100 self-start px-2.5 py-0.5 rounded-full mb-3">
-            <Text className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+            <Text className="text-md text-gray-500 font-bold uppercase tracking-wider">
               {product.category}
             </Text>
           </View>
 
           {/* Product Title */}
-          <Text className="text-gray-800 font-extrabold text-lg leading-6 mb-3">
+          <Text className="text-gray-800 font-extrabold text-xl leading-6 mb-3">
             {product.title}
           </Text>
 
           {/* Price and Rating Row */}
           <View className="flex-row items-center justify-between mt-1">
             <Text
-              className="font-extrabold text-2xl"
+              className="font-extrabold text-4xl"
               style={{ color: primaryColor }}
             >
               ${product.price.toFixed(2)}
@@ -136,21 +139,21 @@ export default function ProductDetailScreen() {
 
             {/* Ratings summary */}
             <View className="flex-row items-center bg-gray-50 border border-gray-100 px-3 py-1.5 rounded-full">
-              <View className="flex-row mr-1.5">
+              <View className="flex-row mr-2">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <ThemedIcon
                     key={star}
                     name={star <= Math.round(product.rating?.rate || 0) ? "star" : "star-outline"}
-                    size={12}
+                    size={20}
                     useThemeColor={star <= Math.round(product.rating?.rate || 0)}
                     color="#D1D1D6"
                   />
                 ))}
               </View>
-              <Text className="text-xs font-bold text-gray-700 mr-1">
+              <Text className="text-md font-bold text-gray-700 mr-1">
                 {product.rating?.rate || 0}
               </Text>
-              <Text className="text-[10px] text-gray-400">
+              <Text className="text-md text-gray-400">
                 ({product.rating?.count || 0} đánh giá)
               </Text>
             </View>
@@ -159,8 +162,8 @@ export default function ProductDetailScreen() {
 
         {/* Description Panel */}
         <View className="bg-white px-4 py-5 border-b border-gray-100 mb-10">
-          <Text className="text-gray-800 font-extrabold text-sm mb-3">Mô tả sản phẩm</Text>
-          <Text className="text-gray-500 text-sm leading-6">
+          <Text className="text-gray-800 font-extrabold text-xl mb-3">Mô tả sản phẩm</Text>
+          <Text className="text-gray-500 text-md leading-6">
             {product.description}
           </Text>
         </View>

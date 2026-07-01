@@ -3,7 +3,6 @@ import { View, Text, TextInput } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema, RegisterInput } from "../schemas/authSchema";
-import { useThemeStore } from "../../theme/store/useThemeStore";
 import { ThemedButton } from "../../../shared/ui/ThemedButton";
 import { ThemedIcon } from "../../../shared/ui/ThemedIcon";
 
@@ -14,7 +13,6 @@ interface RegisterFormProps {
 }
 
 export const RegisterForm = ({ onSubmit, loading, errorMessage }: RegisterFormProps) => {
-  const { primaryColor } = useThemeStore();
   const {
     control,
     handleSubmit,

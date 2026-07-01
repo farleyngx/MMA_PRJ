@@ -38,7 +38,7 @@ export default function RegisterScreen() {
           },
         ]
       );
-    } catch (err: any) {
+    } catch {
       setErrorMessage("Đã có lỗi xảy ra trong quá trình đăng ký.");
     } finally {
       setLoading(false);
